@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Backbone.js & jQM Todo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/jquery/jquery.mobile.custom.structure.min.css">
+    <link rel="stylesheet" href="css/jquery/jquery.mobile.custom.theme.min.css">
+
+    <script src="js/libs/jquery/jquery-2.1.3.min.js"></script>
+    <script src="js/libs/jquery/jquery.mobile.custom.min.js"></script>
+</head>
+<body>
+<div data-role="page" id="firstpage">
+    <div data-role="header">
+        <h1>Backbone.js & jQM Todo</h1>
+    </div>
+    <div data-role="content">
+        <p>Hello, world!</p>
+        <form>
+            <label for="slider-1">Slider with tooltip</label>
+            <input type="range" name="slider-1" id="slider-1" min="0" max="100" value="50" data-popup-enabled="true">
+        </form>
+        <a href="#secondpage">Second page</a>
+    </div>
+    <div data-role="footer">
+        <h4>Page footer</h4>
+    </div>
+</div>
+<div data-role="page" id="secondpage">
+    <div data-role="header">
+        <h1>Backbone.js & jQM Todo</h1>
+    </div>
+    <div data-role="content">
+        <a href="#firstdialog" data-rel="dialog">Page as dialog</a>
+    </div>
+    <div data-role="footer">
+        <h4>Page footer</h4>
+    </div>
+</div>
+<div data-role="page" id="firstdialog">
+    <div data-role="header">
+        <h1>Backbone.js & jQM Todo</h1>
+    </div>
+    <div data-role="content">
+        <a href="#firstpage">Leave dialog</a>
+    </div>
+    <div data-role="footer">
+        <h4>Page footer</h4>
+    </div>
+</div>
+
+</body>
+</html>

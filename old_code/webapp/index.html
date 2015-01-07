@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Backbone JS | Todo</title>
+    <link href="/css/base.css" rel="stylesheet">
+</head>
+<body>
+
+<section id="todoapp">
+    <header id="header">
+        <h1>Todos</h1>
+        <input type="text" id="new-todo" placeholder="What needs to be done?" autofocus>
+    </header>
+    <section id="main">
+        <input id="toggle-all" type="checkbox">
+        <label for="toggle-all">Mark all as complete</label>
+        <ul id="todo-list"></ul>
+    </section>
+    <footer id="footer"></footer>
+</section>
+
+<script data-main="/js/main.js" src="/js/libs/requirejs/require.js"></script>
+
+</body>
+</html>
