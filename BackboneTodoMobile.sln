@@ -5,6 +5,12 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "BackboneTodoMobile", "BackboneTodoMobile\BackboneTodoMobile.jsproj", "{BBD35AE3-614E-4FBE-A764-9735EE526195}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Old code", "Old code", "{3E206782-2265-4FA7-815B-83BE44E183B2}"
+	ProjectSection(SolutionItems) = preProject
+		old_code\webapp\index.html = old_code\webapp\index.html
+		old_code\webapp\index_mobile.html = old_code\webapp\index_mobile.html
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Android = Debug|Android
