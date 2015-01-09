@@ -5,6 +5,7 @@ winstore-jscompat.js
 Microsoft grants you the right to use these script files for the sole purpose of either: (i) interacting through your browser with the Microsoft website, subject to the website’s terms of use; or (ii) using the files as included with a Microsoft product subject to that product’s license terms. Microsoft reserves all other rights to the files not expressly granted by Microsoft, whether by implication, estoppel or otherwise. The notices and licenses below are for informational purposes only.
 */
 // Copyright (c) Microsoft Open Technologies, Inc.  All rights reserved.  Licensed under the Apache License, Version 2.0.  See License.txt in the project root for license information.
+// JavaScript Dynamic Content shim for Windows Store apps
 (function () {
 
     if (window.MSApp && MSApp.execUnsafeLocalFunction) {
@@ -39,17 +40,24 @@ Microsoft grants you the right to use these script files for the sole purpose of
             return Node_get_childNodes.call(element);
         }
 
+        function empty(element) {
+            while (element.childNodes.length) {
+                element.removeChild(element.lastChild);
+            }
+        }
+
         function insertAdjacentHTML(element, position, html) {
             HTMLElement_insertAdjacentHTMLPropertyDescriptor.value.call(element, position, html);
         }
 
         function cleanse(html) {
             var cleaner = document.implementation.createHTMLDocument("cleaner");
+            empty(cleaner.documentElement);
             MSApp.execUnsafeLocalFunction(function () {
-                insertAdjacentHTML(cleaner.body, "afterbegin", html);
+                insertAdjacentHTML(cleaner.documentElement, "afterbegin", html);
             });
 
-            var scripts = cleaner.body.querySelectorAll("script");
+            var scripts = cleaner.documentElement.querySelectorAll("script");
             Array.prototype.forEach.call(scripts, function (script) {
                 switch (script.type.toLowerCase()) {
                     case "":
@@ -103,9 +111,9 @@ Microsoft grants you the right to use these script files for the sole purpose of
                     cleanseAttributes(children[i]);
                 }
             }
-            cleanseAttributes(cleaner.body);
+            cleanseAttributes(cleaner.documentElement);
 
-            return Array.prototype.slice.call(document.adoptNode(cleaner.body).childNodes);
+            return Array.prototype.slice.call(document.adoptNode(cleaner.documentElement).childNodes);
         }
 
         function cleansePropertySetter(property, setter) {
@@ -124,7 +132,7 @@ Microsoft grants you the right to use these script files for the sole purpose of
             });
         }
         cleansePropertySetter("innerHTML", function (propertyDescriptor, target, elements) {
-            propertyDescriptor.set.call(target, "");
+            empty(target);
             for (var i = 0, len = elements.length; i < len; i++) {
                 target.appendChild(elements[i]);
             }
